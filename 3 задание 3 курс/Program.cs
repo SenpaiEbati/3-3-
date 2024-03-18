@@ -16,7 +16,7 @@ namespace _3_задание_3_курс
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Main_F());
         }
     }
 }
