@@ -33,11 +33,12 @@ namespace _3_задание_3_курс
             get { return _First; }
             set
             {
-                if (!string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(value)) {
                     _First = value;
 
-                if (_LB != null && _LB.Items.IndexOf(this) >= 0)
-                    _LB.Items[_LB.Items.IndexOf(this)] = this;
+                    if (_LB != null && _LB.Items.IndexOf(this) >= 0)
+                        _LB.Items[_LB.Items.IndexOf(this)] = this;
+                }
             }
         }
         public string Second
@@ -45,12 +46,12 @@ namespace _3_задание_3_курс
             get { return _Second; }
             set
             {
-                if (!string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(value)) { 
                     _Second = value;
 
-                if (_LB != null && _LB.Items.IndexOf(this) >= 0)
-                    _LB.Items[_LB.Items.IndexOf(this)] = this;
-                
+                    if (_LB != null && _LB.Items.IndexOf(this) >= 0)
+                        _LB.Items[_LB.Items.IndexOf(this)] = this;
+                }
             }
         }
 
@@ -61,9 +62,13 @@ namespace _3_задание_3_курс
 
         public void AddToMinLength(string n, CalcBack PrintResult)
         {
-
-            if (_First.Length < _Second.Length)
+            int i = 0;
+            string f = _First;
+            string s = _Second;
+            if (_First.Length < _Second.Length) { 
                 _First += n;
+                i = 1;
+            }
             else
                 _Second += n;
 
@@ -71,13 +76,19 @@ namespace _3_задание_3_курс
                 _LB.Items[_LB.Items.IndexOf(this)] = this;
 
             PrintResult(string.Format(
-            "Строка \"{0}\" добавлена к наименьшему полю ", n));
+            "Строка \" {0} \" добавлена к наименьшему полю \" {1} \"", n, i == 1 ? f : s));
         }
 
         public void ReplacingWithLongest(string n, CalcBack PrintResult)
         {
+            int i = 0;
+            string f = _First;
+            string s = _Second;
             if (_First.Length > _Second.Length)
+            {
                 _First = n;
+                i = 1;
+            }
             else
                 _Second = n;
 
@@ -85,7 +96,7 @@ namespace _3_задание_3_курс
                 _LB.Items[_LB.Items.IndexOf(this)] = this;
 
             PrintResult(string.Format(
-             "Строка \"{0}\" заменена у наименьшего поля ", n));
+             "У наибольшего поля \"{1}\" строка заменена на \"{0}\"", n, i == 1 ? f : s));
 
         }
     }
